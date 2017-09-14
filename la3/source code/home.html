@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="" data-ng-app="GoogleDirection">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Awesome videos!" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+
+    <style>
+
+        header
+        {
+            margin-top: 30px;
+        }
+        header a
+        {
+            color: #fff;
+            text-decoration: none;
+        }
+        header a:hover
+        {
+            text-decoration: none;
+        }
+        form
+        {
+            margin-top: 20px;
+        }
+        form, #results
+        {
+            padding: 0 50px;
+        }
+        .item
+        { margin-bottom: 25px;
+        }
+        .w100
+        {
+            width: 100%;
+        }
+        body {
+            background-image: url("backgroundimage2.jpg");
+        }
+        h2 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #e9ecef;
+            line-height: 50px;
+        }
+        .btn-primary { background: #de615e; border-color: #de615e; }
+        .btn-primary:hover, .btn-primary:active, .btn-primary:focus { background: #de615e;  border-color: #de615e; }
+
+        #description {
+            font-family: verdana;
+            font-size: 15px;
+            font-weight: 300;
+        }
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+        #infowindow-content {
+            display: none;
+        }
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: verdana;
+        }
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+        .pac-controls label {
+            font-family: verdana;
+            font-size: 13px;
+            font-weight: 300;
+        }
+        #pac-input {
+            background-color: #fff;
+            font-family: verdana;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+        }
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 28px;
+            font-weight: 510;
+            padding: 8px 14px;
+        }
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 120;
+            text-align: center;
+            color: #ffffff;
+        }
+        .col2 {
+            overflow: hidden;
+            float: center;
+            width: 68%;
+            left: 2%;
+        }
+        .btn {
+            -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            background: darkgrey;
+            padding: 14px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 3px;
+            cursor: pointer;
+            border-radius: 3px;
+            border: none;
+            color: white;
+            border:solid 2px cornflowerblue;
+        }
+        .btn:hover
+        {
+            background-color: cornflowerblue;
+            color: white;
+        }
+        .col1 {
+            overflow: hidden;
+            float: center;
+            text-align: left;
+            width: 20%;
+            left: 10%;
+            background-color: whitesmoke;
+        }
+
+        .box
+        {
+            height: 50px;
+            width: 400px;
+        }
+        #outerdiv {
+            width: 90%;
+            height: 90%;
+            position:fixed;
+            text-align:center;
+        }
+
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="youtubeapi.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <script>
+        var app=angular.module("Translate",[]);
+        app.controller("Translatecontroller",function ($scope,$http) {
+            $scope.translate = function () {
+                var word = document.getElementById('pac-input').value;
+                var language = document.getElementById('lang').value;
+                $http.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170914T035029Z.00acc37c362b438f.6e0271e3e41919be72cb17de52a320ac4aaf029d&text=' + word + '&lang=' + language).success(function (data) {
+                    console.log(data);
+                    $scope.output = data.text;
+                })
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="Translate">
+<div class="header"><h1><font face="verdana">Home Page</font></h1></div>
+<div ng-controller="Translatecontroller">
+    <div class="row" align="center">
+        <form action="#">
+            <input type="text" id="pac-input" placeholder="Search Videos" class="box">
+            <br/><br/>
+            <button class="btn">Search</button>
+            <br/><br/><br/>
+            <select name="to" id="lang" class="btn">
+                <option selected disabled>Choose a language to translate</option>
+                <option value="te">Telugu </option>
+                <option value="hi">Hindi</option>
+                <option value="es">spanish</option>
+                <option value="fr">french</option>
+                <option value="zh">Chinese</option>
+            </select>
+            <button class="btn" ng-click="translate()" >Click here to translate</button>
+            <p><h4><b>word in chosen language:&nbsp&nbsp{{output}}</b></h4></p>
+            <div class="col2">
+                <div id="results"></div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

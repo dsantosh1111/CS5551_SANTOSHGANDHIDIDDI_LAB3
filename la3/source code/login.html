@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style>
+    body
+    {
+        background-image: url("backgroundimage1.jpeg");
+    }
+</style>
+
+    <title>Login Page</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="334829106075-lmhp4ig3kka6eq0o5leq7uo4j5i7vt1e.apps.googleusercontent.com">
+    <script src="fbloginjs.js"></script>
+    <script>
+        function registration()
+        {
+            window.location.href='register.html';
+        }
+        function login()
+        {
+            if(document.getElementById('username').value.length>0 && document.getElementById('password').value.length>0)
+            {
+                if(document.getElementById('username').value==localStorage.getItem('UserName')
+                    && document.getElementById('password').value==localStorage.getItem('Password'))
+                {
+                    window.location.href='home.html';
+                }
+                else
+                {
+                    alert('Please enter correct details !');
+                }
+            }
+            else
+            {
+                alert('Dear user, you have missed entering few details');
+            }
+        }
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            if(profile != null || profile != undefined || profile != ''){
+                console.log('ID: ' + profile.getId());
+                console.log('Username: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+                window.location.href = 'home.html';
+            }
+            else
+            {
+                alert('Google Sign In Failed!');
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+<font face="verdana">
+    <br>
+    <br>
+    <form action="home.html">
+        <fieldset>
+            <legend><center><font face="impact" color="aqua" size="7">MASHUP</font></center></legend>
+<div align="center" style="padding-top: 20px">
+    <br/>
+    <br/>
+    <font color="aqua">UserName : <input type="text" id="username" placeholder="UserName" align="vertical"/><br/>
+    <br/>
+    Password : <input type="password" id="password" placeholder="Password"/><br/>
+    <br/>
+    <br/>
+        <font color="#00008b"><input type="submit" id="login" value="Login" align="center" onclick="login()"/></font>
+
+    <br>
+    <br>
+        <label>New User ??</label>
+        <a style="color:black; font-weight: bold" href="register.html"><font color="aqua">Signup</a>
+        <br/>
+        <br/>
+        <div class="g-signin2" data-size="xlarge" data-onsuccess="onSignIn"></div>
+        <br/>
+        <div class="fb-login-button" data-max-rows="7" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+    </font>
+    </div>
+        </fieldset>
+    </form>
+
+
+
+</font>
+</body>
+</html>
+
+

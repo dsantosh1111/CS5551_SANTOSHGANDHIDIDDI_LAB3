@@ -1,0 +1,53 @@
+select
+{
+    border:solid 1px cornflowerblue;
+    padding:3px;
+}
+body
+{
+    color: white;
+    font-family: "Arial Black";
+    font-size: large;
+}
+
+input
+{
+    -moz-border-radius: 10px;
+    font-size: large;
+    border-radius: 10px;
+    border:solid 2px cornflowerblue;
+    padding:3px;
+    class:"font: ;rm-control";
+}
+
+
+.button
+{
+    height: 50px;
+    width: 250px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+}
+.button:hover
+{
+    background-color: cornflowerblue;
+    color: white;
+}
+div
+{
+    class:"form-group";
+    margin:10px;
+}
+#leftDiv{
+    padding-right: 5px;
+    display:table-cell;
+    text-align:right;
+}
+
+#rightDiv{
+    padding-left: 0px;
+    text-align:left;
+    display:table-cell;
+}

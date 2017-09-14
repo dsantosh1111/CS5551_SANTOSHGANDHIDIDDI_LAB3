@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Registration page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <title>Registration Page</title>
+    <script>
+        function registration()
+        {
+            if(document.getElementById('fn').value.length>0 && document.getElementById('ln').value.length>0 && document.getElementById('username').value.length>0 && document.getElementById('email').value.length>0 && document.getElementById('password').value.length>0 && document.getElementById('cpassword').value.length>0 &&
+                ( document.getElementById('cpassword').value ==document.getElementById('password').value))
+            {
+                localStorage.setItem('UserName',(document.getElementById('username').value));
+                localStorage.setItem('Password',(document.getElementById('password').value));
+                window.location.href='LoginPage.html';
+            }
+            else
+            {
+                alert('Dear user, you have missed entering few details !');
+            }
+        }
+    </script>
+</head>
+
+    <br/>
+<body style="background-image:url('backgroundimage2.jpg') ; background-size:80% , no-repeat">
+<center>
+
+    <br/>
+    <br/>
+    <form>
+        <fieldset>
+            <legend><h1><font color="">REGISTER HERE!</h1></legend>
+        <div>FirstName : <input id="fn" type="text"  name="firstName" placeholder="First name" size="23" ></div>
+
+        <div>LastName : <input id="ln" type="text" name="lastName" placeholder="Last name" size="23" ></div>
+
+        <div>UserName : <input id="username" type="text" name="username" placeholder="Enter UserName" size="23" ></div>
+
+        <div>E-Mail : <input id="email" type="email" name="email" placeholder="Email" size=23></div>
+
+        <div>Enter New Password : <input id="password" type="password" name="password12" placeholder="Create password" size=23></div>
+
+        <div>Re-Enter Password : <input id="confirmpassword" type="password" name="password11" placeholder="Confirm your password" size=23></div>
+
+        <div>Mobile number : <input id="mobile" type="text"  placeholder="Mobile phone" size="23"></div>
+
+        <div>Birthday : <input id="bday" type="date" name="bday" style="width:15%"></div>
+
+        <div>
+            Gender : <select id="gender" name="gender" style="width:16%">
+            <option selected disabled>Gender</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>choose not to say</option>
+        </select>
+        </div>
+
+        <div>
+            Location : <select id="loc" name="country" style="width:15%">
+            <option selected disabled>Choose here </option>
+            <option>Australia</option>
+            <option>Bangladesh</option>
+            <option>Brazil</option>
+            <option>Canada</option>
+            <option>Egypt</option>
+            <option>France</option>
+            <option>Hong Kong</option>
+            <option>India</option>
+            <option>Indonesia</option>
+            <option>Iran</option>
+            <option>Iraq</option>
+            <option>Ireland</option>
+            <option>Japan</option>
+            <option>Malaysia</option>
+            <option>Mexico</option>
+            <option>Nepal</option>
+            <option>Netherlands</option>
+            <option>Pakistan</option>
+            <option>Qatar</option>
+            <option>Russia</option>
+            <option>South Africa</option>
+            <option>Sri Lanka</option>
+            <option>Turkey</option>
+            <option>United Kingdom</option>
+            <option>United States of America</option>
+            </select>
+        </div>
+            <br/><br/>
+        <input class="button" type="button" name="Register" value="Register" onclick="registration()">
+
+        <input class="button" type="reset" value="Reset">
+        </fieldset>
+    </form>
+</center>
+</body>
